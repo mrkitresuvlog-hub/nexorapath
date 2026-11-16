@@ -1,0 +1,237 @@
+/* NexoraPath: deep-space theme. Starfield, nebula glow, glass panels, neon edges. */
+:root{
+  color-scheme:dark;
+  --space:#03030f;--panel:rgba(14,18,48,.58);--panel-solid:#0b0f2a;
+  --text:#EAF0FF;--muted:#A3B2DA;--line:rgba(130,160,255,.28);
+  --cyan:76 216 255;--blue:90 120 255;--violet:155 92 255;--magenta:255 79 216;--gold:255 200 87;
+  --display:"Space Grotesk","Trebuchet MS",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;background:var(--space)}
+body{font-family:var(--body);font-size:1.0625rem;line-height:1.6;color:var(--text);background:transparent;position:relative;overflow-x:hidden}
+
+/* Starfield and nebula glow, fixed behind everything */
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none}
+body::before{
+  z-index:-2;
+  background:
+    radial-gradient(60% 45% at 85% 5%,rgba(110,70,255,.30),transparent 70%),
+    radial-gradient(55% 45% at 5% 75%,rgba(0,150,255,.20),transparent 70%),
+    radial-gradient(40% 35% at 60% 100%,rgba(255,79,216,.12),transparent 70%),
+    var(--space);
+}
+body::after{
+  z-index:-1;
+  background-image:
+    radial-gradient(1.2px 1.2px at 40px 60px,#fff,transparent),
+    radial-gradient(1px 1px at 130px 20px,#cfe3ff,transparent),
+    radial-gradient(1.5px 1.5px at 210px 140px,#fff,transparent),
+    radial-gradient(1px 1px at 90px 180px,#e6d9ff,transparent),
+    radial-gradient(1px 1px at 270px 80px,#fff,transparent),
+    radial-gradient(1.3px 1.3px at 320px 230px,#bfe9ff,transparent),
+    radial-gradient(1px 1px at 20px 260px,#fff,transparent),
+    radial-gradient(1px 1px at 180px 290px,#fff,transparent);
+  background-size:340px 320px;
+  animation:twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes twinkle{from{opacity:.45}to{opacity:1}}
+
+a{color:rgb(var(--cyan));text-underline-offset:3px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.1;letter-spacing:-.01em}
+.container{width:min(1180px,100% - 32px);margin-inline:auto}
+main>section{padding:80px 0;position:relative}
+.section-title{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:700;margin-bottom:10px;text-shadow:0 0 28px rgb(var(--blue)/.55)}
+.section-sub{color:var(--muted);max-width:60ch;margin-bottom:34px}
+:focus-visible{outline:2px solid rgb(var(--cyan));outline-offset:3px}
+::selection{background:rgb(var(--violet)/.55)}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05061a}::-webkit-scrollbar-thumb{background:linear-gradient(#4c6fff,#9b5cff);border-radius:8px}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(3,3,15,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 1px 24px rgb(var(--blue)/.18)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;font-family:var(--display);font-weight:700;font-size:1.4rem;text-decoration:none;color:var(--text)}
+.logo::before{content:"";width:24px;height:24px;margin-right:10px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0,rgb(var(--cyan)) 25%,rgb(var(--violet)) 70%,#1a1050 100%);box-shadow:0 0 16px rgb(var(--cyan)/.8),0 0 36px rgb(var(--violet)/.6)}
+.logo span{color:rgb(var(--cyan));text-shadow:0 0 14px rgb(var(--cyan)/.7)}
+nav#mainNav{display:flex;gap:4px}
+nav#mainNav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 14px;border-radius:999px;transition:color .2s,background .2s,box-shadow .2s}
+nav#mainNav a:hover{color:#fff;background:rgb(var(--blue)/.2);box-shadow:0 0 18px rgb(var(--blue)/.4)}
+#menuToggle{display:none;background:var(--panel);border:1px solid var(--line);color:var(--text);font-size:1.2rem;border-radius:10px;padding:4px 12px;cursor:pointer}
+
+/* Buttons and fields */
+.button,button.button{display:inline-block;font:inherit;font-weight:700;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 24px;border-radius:999px;cursor:pointer;text-decoration:none;white-space:nowrap;backdrop-filter:blur(8px);transition:transform .15s,box-shadow .2s,border-color .2s}
+.button.primary{border-color:transparent;background:linear-gradient(120deg,rgb(var(--blue)),rgb(var(--violet)) 60%,rgb(var(--magenta)));color:#fff;box-shadow:0 0 24px rgb(var(--violet)/.55)}
+.button:hover{transform:translateY(-2px);box-shadow:0 0 30px rgb(var(--cyan)/.5);border-color:rgb(var(--cyan)/.7)}
+.button.primary:hover{box-shadow:0 0 38px rgb(var(--magenta)/.65)}
+input,select{font:inherit;color:var(--text);background:rgba(8,10,34,.72);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%;backdrop-filter:blur(8px);transition:border-color .2s,box-shadow .2s}
+input::placeholder{color:#7f8fb9}
+input:focus,select:focus{outline:none;border-color:rgb(var(--cyan));box-shadow:0 0 0 3px rgb(var(--cyan)/.22),0 0 22px rgb(var(--cyan)/.3)}
+option{background:var(--panel-solid);color:var(--text)}
+
+/* Hero with nebula backdrop */
+.hero{padding:76px 0 64px!important;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(90deg,var(--space) 8%,rgba(3,3,15,.55) 50%,rgba(3,3,15,.2) 100%),
+    linear-gradient(180deg,transparent 60%,var(--space) 100%),
+    url(images/nebula.jpg) 80% 40%/cover no-repeat;
+  opacity:.9;
+}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,6.6vw,5.2rem);font-weight:700;margin-bottom:20px;
+  background:linear-gradient(100deg,#fff 10%,rgb(var(--cyan)) 55%,rgb(var(--violet)));-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 22px rgb(var(--blue)/.45))}
+.hero .lead{color:#c4d0ee;max-width:52ch;margin-bottom:30px;font-size:1.15rem}
+.search-row{display:flex;gap:12px;max-width:620px}
+.hero-links{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px;font-weight:600}
+
+/* Clock card with spinning light border */
+.admit-card{position:relative;border-radius:22px;overflow:hidden;padding:30px 28px;isolation:isolate;box-shadow:0 0 50px rgb(var(--violet)/.4);animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.admit-card::before{content:"";position:absolute;inset:-60%;z-index:-2;background:conic-gradient(from 0deg,transparent 0 55%,rgb(var(--cyan)) 70%,rgb(var(--violet)) 85%,rgb(var(--magenta)) 95%,transparent);animation:spin 7s linear infinite}
+.admit-card::after{content:"";position:absolute;inset:2px;z-index:-1;border-radius:20px;background:linear-gradient(160deg,rgba(14,18,60,.94),rgba(6,6,26,.96))}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(34px) scale(.96)}to{opacity:1;transform:none}}
+.admit-title{font-weight:600;font-size:.95rem;color:var(--muted);margin-bottom:14px}
+.greeting{font-family:var(--display);font-weight:700;font-size:1.55rem;margin-bottom:4px}
+.admit-time{display:flex;align-items:baseline;gap:8px;margin:6px 0 2px}
+.admit-time strong{font-family:var(--display);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;font-variant-numeric:tabular-nums;color:#fff;text-shadow:0 0 22px rgb(var(--cyan)/.8)}
+.admit-time small{font-weight:700;color:rgb(var(--cyan))}
+.admit-date{color:var(--muted);font-weight:500}
+.omr{display:flex;gap:12px;margin:22px 0 16px}
+.omr i{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fa4e8,#2a3470 70%);opacity:.7}
+.omr i.on{width:26px;height:26px;margin-top:-3px;opacity:1;background:radial-gradient(circle at 35% 30%,#fff,rgb(var(--cyan)) 35%,rgb(var(--violet)));box-shadow:0 0 18px rgb(var(--cyan)/.9),0 0 38px rgb(var(--violet)/.6)}
+.admit-note{font-size:.92rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+/* Stream cards: glass with a coloured neon edge per card */
+.category-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.category-card{--c:var(--cyan);font:inherit;text-align:left;color:var(--text);cursor:pointer;background:var(--panel);border:1px solid rgb(var(--c)/.4);border-radius:16px;padding:20px 16px 16px;backdrop-filter:blur(10px);transition:transform .2s,box-shadow .25s,border-color .25s}
+.category-card:nth-child(5n+2){--c:var(--violet)}
+.category-card:nth-child(5n+3){--c:var(--magenta)}
+.category-card:nth-child(5n+4){--c:var(--gold)}
+.category-card:nth-child(5n+5){--c:var(--blue)}
+.category-card .ico{display:grid;place-items:center;width:52px;height:52px;font-size:1.7rem;margin-bottom:14px;border-radius:50%;background:radial-gradient(circle,rgb(var(--c)/.35),rgb(var(--c)/.05) 70%);box-shadow:0 0 22px rgb(var(--c)/.45)}
+.category-card strong{font-family:var(--display);font-size:1.1rem}
+.category-card:hover{transform:translateY(-5px);border-color:rgb(var(--c));box-shadow:0 0 34px rgb(var(--c)/.5),inset 0 0 24px rgb(var(--c)/.12)}
+
+/* Finder band over the cosmic web */
+#finder{border-block:1px solid var(--line);background:linear-gradient(180deg,var(--space),rgba(3,3,15,.55) 30%,rgba(3,3,15,.55) 70%,var(--space)),url(images/cosmicweb.jpg) center/cover no-repeat}
+.finder-card{max-width:820px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;backdrop-filter:blur(14px);box-shadow:0 0 50px rgb(var(--violet)/.3)}
+#finderForm{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:end}
+#finderForm label{display:block;font-size:.88rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+#finderResult{margin-top:22px;color:var(--muted)}
+#finderResult:empty{display:none}
+#finderResult strong{color:var(--text);display:block;margin-bottom:8px}
+#finderResult ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:10px 0 14px}
+#finderResult li{background:rgb(var(--cyan)/.14);color:#d9f6ff;border:1px solid rgb(var(--cyan)/.5);border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:500}
+
+/* Exams */
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;margin-bottom:18px}
+#examCount{color:var(--muted);font-weight:600;margin-bottom:22px;font-size:.95rem}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:22px}
+.exam-card{--c:var(--cyan);display:flex;flex-direction:column;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;backdrop-filter:blur(10px);transition:transform .2s,box-shadow .25s,border-color .25s}
+.exam-card:nth-child(4n+2){--c:var(--violet)}
+.exam-card:nth-child(4n+3){--c:var(--magenta)}
+.exam-card:nth-child(4n+4){--c:var(--blue)}
+.exam-card:hover{transform:translateY(-5px);border-color:rgb(var(--c)/.8);box-shadow:0 0 32px rgb(var(--c)/.4),inset 0 0 26px rgb(var(--c)/.1)}
+.exam-top{display:flex;justify-content:space-between;align-items:center}
+.exam-icon{display:grid;place-items:center;width:52px;height:52px;font-size:1.6rem;border-radius:50%;background:radial-gradient(circle,rgb(var(--c)/.35),rgb(var(--c)/.05) 70%);box-shadow:0 0 20px rgb(var(--c)/.4)}
+.tag{background:rgb(var(--c)/.14);color:#fff;border:1px solid rgb(var(--c)/.55);border-radius:999px;padding:2px 11px;font-size:.8rem;font-weight:600}
+.exam-card h3{font-size:1.45rem;font-weight:700}
+.exam-card p{color:var(--muted);font-size:.96rem;flex:1;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.exam-meta{font-size:.86rem;font-weight:600;color:rgb(var(--c));border-top:1px dashed var(--line);padding-top:10px}
+.details-button{font:inherit;font-weight:700;color:var(--text);background:transparent;border:1px solid rgb(var(--c)/.7);border-radius:999px;padding:10px;cursor:pointer;transition:background .2s,box-shadow .2s}
+.details-button:hover{background:rgb(var(--c)/.22);box-shadow:0 0 20px rgb(var(--c)/.5)}
+#emptyState{text-align:center;color:var(--muted);padding:48px 0}
+
+/* Exam dialog */
+dialog#examDialog{margin:auto;width:min(740px,94vw);max-height:90vh;overflow:auto;color:var(--text);background:linear-gradient(160deg,rgba(16,20,64,.96),rgba(5,6,24,.98));border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 0 70px rgb(var(--violet)/.45)}
+dialog#examDialog[open]{animation:pop .25s ease-out}
+dialog#examDialog::backdrop{background:rgba(2,2,12,.78);backdrop-filter:blur(4px)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+#dialogClose{position:sticky;top:0;float:right;background:rgb(var(--blue)/.25);color:var(--text);border:1px solid var(--line);width:38px;height:38px;border-radius:50%;font-size:1.05rem;cursor:pointer}
+#dialogClose:hover{box-shadow:0 0 18px rgb(var(--cyan)/.6)}
+.dialog-category{display:inline-block;background:rgb(var(--cyan)/.14);border:1px solid rgb(var(--cyan)/.5);border-radius:999px;padding:2px 12px;font-size:.85rem;font-weight:600}
+.dialog-title{margin:12px 0 10px;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700}
+.dialog-description{color:var(--muted);margin-bottom:14px}
+.detail-block{margin:22px 0;padding-left:16px;border-left:3px solid rgb(var(--violet));box-shadow:-8px 0 18px -10px rgb(var(--violet)/.8)}
+.detail-block h4{margin-bottom:8px;font-size:1.1rem}
+.detail-block p{color:var(--muted);margin-bottom:12px}
+.detail-list{padding-left:20px;color:var(--muted)}
+.detail-list li{margin:4px 0}
+
+/* College directory: each group is a window onto your space images */
+.college-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.college-cat{--img:url(images/nebula.jpg);--pos:center;position:relative;overflow:hidden;min-height:170px;font:inherit;text-align:left;color:#fff;cursor:pointer;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;
+  background:linear-gradient(180deg,rgba(3,3,15,.15) 0%,rgba(3,3,15,.88) 85%),var(--img) var(--pos)/cover no-repeat;transition:transform .25s,box-shadow .25s,border-color .25s}
+.college-cat:nth-child(5n+2){--img:url(images/andromeda.jpg)}
+.college-cat:nth-child(5n+3){--img:url(images/darkmatter.jpg)}
+.college-cat:nth-child(5n+4){--img:url(images/spiral.jpg)}
+.college-cat:nth-child(5n+5){--img:url(images/cosmicweb.jpg)}
+.college-cat:nth-child(n+6){--pos:30% 70%}
+.college-cat .ico{position:absolute;top:16px;left:18px;display:grid;place-items:center;width:46px;height:46px;font-size:1.5rem;border-radius:50%;background:rgba(3,3,15,.55);border:1px solid var(--line);backdrop-filter:blur(6px)}
+.college-cat strong{font-family:var(--display);font-size:1.3rem;text-shadow:0 2px 12px #000}
+.college-cat small{color:#cdd8f5;font-size:.9rem;text-shadow:0 1px 8px #000}
+.college-cat:hover{transform:translateY(-6px) scale(1.015);border-color:rgb(var(--cyan));box-shadow:0 0 38px rgb(var(--cyan)/.5)}
+#college-results{display:none;margin-top:44px;padding-top:34px;border-top:1px solid var(--line)}
+.results-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:24px}
+.results-head h3{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:700;text-shadow:0 0 24px rgb(var(--blue)/.6)}
+#college-search{max-width:360px}
+.college-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.college-card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(10px);transition:transform .2s,box-shadow .25s,border-color .25s}
+.college-card:hover{transform:translateY(-5px);border-color:rgb(var(--cyan)/.8);box-shadow:0 0 32px rgb(var(--cyan)/.35),inset 0 0 22px rgb(var(--cyan)/.08)}
+.college-card-content{padding:22px;display:flex;flex-direction:column;gap:8px;height:100%}
+.college-card h3{font-size:1.2rem;font-weight:700;padding-right:70px}
+.college-card p{color:var(--muted);font-size:.95rem}
+.college-tier{position:absolute;top:18px;right:16px;border:1px solid rgb(var(--gold)/.7);color:rgb(var(--gold));background:rgb(var(--gold)/.1);border-radius:999px;padding:1px 10px;font-size:.78rem;font-weight:700;box-shadow:0 0 14px rgb(var(--gold)/.3)}
+.college-card button{margin-top:auto;font:inherit;font-weight:700;color:#fff;background:linear-gradient(120deg,rgb(var(--blue)/.85),rgb(var(--violet)/.85));border:0;border-radius:999px;padding:10px;cursor:pointer;transition:box-shadow .2s,transform .15s}
+.college-card button:hover{box-shadow:0 0 26px rgb(var(--violet)/.8);transform:translateY(-1px)}
+
+/* College profile overlay */
+#iitProfileOverlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(2,2,12,.8);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:16px}
+.iit-profile-box{width:min(780px,100%);max-height:92vh;overflow:auto;color:var(--text);background:linear-gradient(160deg,rgba(16,20,64,.97),rgba(5,6,24,.98));border:1px solid var(--line);border-radius:22px;box-shadow:0 0 80px rgb(var(--violet)/.5);animation:pop .25s ease-out}
+.iit-profile-head{position:sticky;top:0;z-index:1;padding:24px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:flex-start;
+  background:linear-gradient(90deg,rgba(5,6,24,.92),rgba(5,6,24,.45)),url(images/nebula.jpg) center 35%/cover}
+.iit-profile-head h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;text-shadow:0 0 20px rgb(var(--cyan)/.6)}
+.iit-profile-head p{color:#cdd8f5}
+.iit-close{background:rgba(3,3,15,.6);color:var(--text);border:1px solid var(--line);width:38px;height:38px;border-radius:50%;font-size:1.05rem;cursor:pointer;flex-shrink:0}
+.iit-close:hover{box-shadow:0 0 18px rgb(var(--cyan)/.7)}
+#iitProfileContent{padding:6px 26px 28px}
+.iit-profile-section{margin-top:26px}
+.iit-profile-section h3{font-size:1.12rem;margin-bottom:12px;padding-bottom:8px;color:rgb(var(--cyan));border-bottom:1px solid;border-image:linear-gradient(90deg,rgb(var(--cyan)),transparent) 1}
+.iit-profile-section p{color:var(--muted)}
+.iit-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.iit-info-card{background:rgb(var(--blue)/.1);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.iit-info-card small{display:block;color:var(--muted);font-size:.82rem;font-weight:600;margin-bottom:2px}
+.iit-info-card strong{font-size:1rem}
+.iit-course-list{display:flex;flex-wrap:wrap;gap:8px}
+.iit-course-item{background:rgb(var(--violet)/.18);border:1px solid rgb(var(--violet)/.6);border-radius:999px;padding:4px 14px;font-size:.9rem;font-weight:600;box-shadow:0 0 14px rgb(var(--violet)/.25)}
+
+/* Toast */
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--panel-solid);border:1px solid rgb(var(--cyan)/.6);color:#fff;border-radius:12px;padding:12px 22px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:200;box-shadow:0 0 24px rgb(var(--cyan)/.4)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Footer with spiral galaxy */
+footer{position:relative;border-top:1px solid var(--line);padding:52px 0;color:var(--muted);font-size:.95rem;
+  background:linear-gradient(90deg,var(--space) 35%,rgba(3,3,15,.4)),url(images/spiral.jpg) right center/contain no-repeat,var(--space)}
+footer p+p{margin-top:10px;max-width:60ch}
+footer p:first-child{color:#fff;font-family:var(--display);font-weight:700;font-size:1.1rem}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .admit-card{max-width:440px}
+}
+@media (max-width:820px){
+  #menuToggle{display:block}
+  nav#mainNav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:rgba(3,3,15,.96);border-bottom:1px solid var(--line)}
+  nav#mainNav.open{display:flex}
+  nav#mainNav a{padding:16px;border-radius:0;border-top:1px solid rgba(130,160,255,.14)}
+  #finderForm,.filters{grid-template-columns:1fr}
+  .search-row{flex-direction:column}
+  main>section{padding:56px 0}
+  .hero{padding-top:44px!important}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

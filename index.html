@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#03030f">
+<title>NexoraPath – Exams and Colleges Guide for India</title>
+<meta name="description" content="Explore entrance exams and a directory of IITs, NITs, AIIMS, IIITs, IIMs and other colleges in India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="#home">Nexora<span>Path</span></a>
+    <button id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">☰</button>
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#finder">Exam Finder</a>
+      <a href="#exams">Exams</a>
+      <a href="#colleges">Colleges</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Know your exam.<br>Pick your college.</h1>
+        <p class="lead">Eligibility, subjects and selection stages for more than 120 exams, plus 180+ colleges with courses, admission routes and official links.</p>
+        <div class="search-row">
+          <input id="globalSearch" type="search" placeholder="Search an exam, e.g. JEE, NEET, CAT, UPSC" aria-label="Search exams">
+          <button id="globalSearchBtn" class="button primary" type="button">Search exams</button>
+        </div>
+        <p class="hero-links"><a href="#colleges">Browse colleges</a><a href="#finder">Not sure where to start?</a></p>
+      </div>
+
+      <aside class="admit-card" aria-label="Today in India">
+        <p class="admit-title">Today</p>
+        <p id="greeting" class="greeting">Welcome</p>
+        <p class="admit-time"><strong id="currentTime">--:--:--</strong><small>IST</small></p>
+        <p class="admit-date"><span id="currentDay">—</span>, <span id="currentDate">—</span></p>
+        <div class="omr" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i></div>
+        <p class="admit-note">Next step: pick a stream below.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Exam categories -->
+  <section id="categories">
+    <div class="container">
+      <h2 class="section-title">Choose a stream</h2>
+      <p class="section-sub">Tap a stream to see only its exams.</p>
+      <div class="category-grid">
+        <button class="category-card" data-category="Engineering"><span class="ico">⚙️</span><strong>Engineering</strong></button>
+        <button class="category-card" data-category="Medical"><span class="ico">🧬</span><strong>Medical</strong></button>
+        <button class="category-card" data-category="Management"><span class="ico">📊</span><strong>Management</strong></button>
+        <button class="category-card" data-category="Government"><span class="ico">🏛️</span><strong>Government</strong></button>
+        <button class="category-card" data-category="Banking"><span class="ico">🏦</span><strong>Banking</strong></button>
+        <button class="category-card" data-category="Railway"><span class="ico">🚆</span><strong>Railway</strong></button>
+        <button class="category-card" data-category="Defence"><span class="ico">🛡️</span><strong>Defence</strong></button>
+        <button class="category-card" data-category="Law"><span class="ico">⚖️</span><strong>Law</strong></button>
+        <button class="category-card" data-category="Design"><span class="ico">🎨</span><strong>Design</strong></button>
+        <button class="category-card" data-category="University"><span class="ico">🎓</span><strong>University</strong></button>
+        <button class="category-card" data-category="Teaching"><span class="ico">📖</span><strong>Teaching</strong></button>
+        <button class="category-card" data-category="Study Abroad"><span class="ico">🌍</span><strong>Study Abroad</strong></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Finder -->
+  <section id="finder">
+    <div class="container">
+      <h2 class="section-title">Exam finder</h2>
+      <p class="section-sub">Choose your education level and interest to get starting points.</p>
+      <div class="finder-card">
+        <form id="finderForm">
+          <div>
+            <label for="educationLevel">Education level</label>
+            <select id="educationLevel">
+              <option>After Class 10</option>
+              <option selected>After Class 12</option>
+              <option>Graduation</option>
+              <option>Postgraduate</option>
+              <option>Diploma / ITI</option>
+            </select>
+          </div>
+          <div>
+            <label for="interestArea">Interest area</label>
+            <select id="interestArea">
+              <option>Science</option>
+              <option selected>Technology</option>
+              <option>Government</option>
+              <option>Business</option>
+              <option>Creative</option>
+              <option>Global study</option>
+            </select>
+          </div>
+          <button class="button primary" type="submit">Find exams</button>
+        </form>
+        <div id="finderResult" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exams -->
+  <section id="exams">
+    <div class="container">
+      <h2 class="section-title">Entrance and recruitment exams</h2>
+      <p class="section-sub">Search and filter exams. Always confirm dates and eligibility on the official website.</p>
+      <div class="filters">
+        <input id="examSearch" type="search" placeholder="Search by name, category or keyword" aria-label="Search exams in list">
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option>Banking</option>
+          <option>Defence</option>
+          <option>Design</option>
+          <option>Engineering</option>
+          <option>Finance</option>
+          <option>Government</option>
+          <option>International</option>
+          <option>Law</option>
+          <option>Management</option>
+          <option>Medical</option>
+          <option>Pharmacy</option>
+          <option>Railway</option>
+          <option>Study Abroad</option>
+          <option>Teaching</option>
+          <option>Undergraduate</option>
+          <option>University</option>
+        </select>
+        <select id="levelFilter" aria-label="Filter by level">
+          <option value="all">All levels</option>
+          <option>School</option>
+          <option>After Class 10</option>
+          <option>After Class 12</option>
+          <option>Diploma</option>
+          <option>ITI</option>
+          <option>Graduation</option>
+          <option>Postgraduate</option>
+        </select>
+        <button id="clearFilters" class="button" type="button">Clear</button>
+      </div>
+      <p id="examCount" aria-live="polite"></p>
+      <div id="examGrid" class="exam-grid"></div>
+      <div id="emptyState" hidden>
+        <p>No exams match your search. Try a different keyword or clear the filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colleges -->
+  <section id="colleges">
+    <div class="container">
+      <h2 class="section-title">College directory</h2>
+      <p class="section-sub">Pick a group to see institutions, courses, admission routes and official websites.</p>
+
+      <div class="college-cats">
+        <button class="college-cat" onclick="showCollegeCategory('iit')"><span class="ico">🚀</span><strong>IITs</strong><small>Indian Institutes of Technology</small></button>
+        <button class="college-cat" onclick="showCollegeCategory('nit')"><span class="ico">⚙️</span><strong>NITs</strong><small>National Institutes of Technology</small></button>
+        <button class="college-cat" onclick="showCollegeCategory('iiit')"><span class="ico">💻</span><strong>IIITs</strong><small>Information Technology institutes</small></button>
+        <button class="college-cat" onclick="showCollegeCategory('aiims')"><span class="ico">🏥</span><strong>AIIMS</strong><small>Medical Sciences institutes</small></button>
+        <button class="college-cat" onclick="showCollegeCategory('iim')"><span class="ico">📊</span><strong>IIMs</strong><small>Indian Institutes of Management</small></button>
+        <button class="college-cat" onclick="showCollegeCategory('engineering')"><span class="ico">🏗️</span><strong>Other Engineering</strong><small>IISc, BITS, VIT, DTU and more</small></button>
+        <button class="college-cat" onclick="showCollegeCategory('medical')"><span class="ico">🩺</span><strong>Other Medical</strong><small>JIPMER, PGIMER, AFMC and more</small></button>
+        <button class="college-cat" onclick="showCollegeCategory('university')"><span class="ico">🎓</span><strong>Universities &amp; Colleges</strong><small>Central, law, design, science, arts</small></button>
+      </div>
+
+      <div id="college-results">
+        <div class="results-head">
+          <h3 id="college-results-title">Colleges</h3>
+          <input id="college-search" type="search" placeholder="Search by name, city or state" aria-label="Search colleges">
+        </div>
+        <div id="college-list" class="college-list"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- College profile popup -->
+<div id="iitProfileOverlay" role="dialog" aria-modal="true" aria-labelledby="iitProfileName">
+  <div class="iit-profile-box">
+    <div class="iit-profile-head">
+      <div>
+        <h2 id="iitProfileName">College</h2>
+        <p id="iitProfileLocation"></p>
+      </div>
+      <button class="iit-close" type="button" onclick="closeIITProfile()" aria-label="Close profile">✕</button>
+    </div>
+    <div id="iitProfileContent"></div>
+  </div>
+</div>
+
+<!-- Exam details popup -->
+<dialog id="examDialog" aria-label="Exam details">
+  <button id="dialogClose" type="button" aria-label="Close">✕</button>
+  <div id="dialogContent"></div>
+</dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> NexoraPath. All rights reserved.</p>
+    <p>Information is a starting guide only and may change. Always verify eligibility, dates, fees and rules on the official website or notification.</p>
+  </div>
+</footer>
+
+<script src="script-4.js"></script>
+</body>
+</html>
